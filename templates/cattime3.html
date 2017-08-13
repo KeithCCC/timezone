@@ -1,0 +1,54 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+{% block javascript %}
+<SCRIPT SRC="myscript.js"></SCRIPT>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('nowtime').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
+{% endblock %}
+<body onload="startTime()">
+<table border="1" width="500">
+    <tr>
+        <th>Where</th>
+        <th>Time</th>
+    </tr>
+    <tr>
+        <th>Now</th>
+        <th id="nowtime"></th>
+    </tr>
+    <tr>
+        <th>Tokyo</th>
+        <th>{{ cat1 }}</th>
+    </tr>
+    <tr>
+        <th>St. Pete</th>
+        <th>{{ cat2 }}</th>
+    </tr>
+    <tr>
+        <th>Paris</th>
+        <th>{{ cat3 }}</th>
+    </tr>
+</table>
+</body>
