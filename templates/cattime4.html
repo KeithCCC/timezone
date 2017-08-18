@@ -44,6 +44,7 @@
 </ul>
 
 <body onload="startTime()">
+    <!--
     <table border="1" width="500">
         <tr>
             <th>Where</th>
@@ -66,4 +67,48 @@
             <th>{{ cat3 }}</th>
         </tr>
     </table>
+-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-6">NOW</div>
+            <div class="col-xs-6 col-md-6" id="nowtime"></div>
+        </div>
+    </div>
+    <hr width=300 size=8>
+    <br></br>
+    <div class="container">
+        <div class="row panel panel-default">
+            <div class="col-xs-6 col-md-4">
+                <p>Tokyo</p>
+                <p>{{ cat1 }}</p>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <p>St. Pete</p>
+                <p>{{ cat2 }}</p>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <p>Paris</p>
+                <p>{{ cat3 }}</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Basic panel
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+        </div>
+
 </body>
