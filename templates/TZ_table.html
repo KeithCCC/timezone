@@ -1,58 +1,66 @@
-{% extends "bootstrap/base.html" %} 
+{% extends "bootstrap/base.html" %} {% block title %}Test page{% endblock %} {% block content %}
 
-{% block title %}Test page{% endblock %} 
-
-{% block content %}
 <body onload="startTime()">
     <div class="panel panel-default">
-        <div class="panel-body" align=center>
+        <div class="panel-body" align=left>
             <p id="nowtime"></p>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-6 col-md-2">
                 <p>Tokyo</p>
-                <ul>
+                <table class="table">
                     {% for n in cat1 %}
-                    <li> {{n}}</li>
+                    <tr>
+                        <td> {{n}} </td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-6 col-md-2">
                 <p>St. Pete</p>
-                <ul>
-                    {% for n in cat2 %}
-                    <li> {{n}}</li>
+                <table class="table">
+                    {% for n in cat1 %}
+                    <tr>
+                        <td> {{n}} </td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-6 col-md-2">
                 <p>Paris</p>
-                <ul>
-                    {% for n in cat3 %}
-                    <li> {{n}}</li>
+                <table class="table">
+                    {% for n in cat1 %}
+                    <tr>
+                        <td> {{n}} </td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
         </div>
     </div>
 
 </body>
-{% endblock %} 
-
-{% block scripts %}
+{% endblock %} {% block scripts %}
 <script>
     function startTime() {
         var today = new Date();
+        var y = today.getFullYear();
+        var month = today.getMonth();
+        var d = today.getDate();
+        var dow = today.getDay();
         var h = today.getHours();
         var m = today.getMinutes();
         var s = today.getSeconds();
+
+        var dayofw = new Array ("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
         // add a zero in front of numbers<10
         m = checkTime(m);
         s = checkTime(s);
-        document.getElementById('nowtime').innerHTML = h + ":" + m + ":" + s;
+        //document.getElementById('nowtime').innerHTML = y + "/" + month + "/" + d + " (" + dayofw(dow) + ") " + h + ":" + m + ":" + s;
+        document.getElementById('nowtime').innerHTML = y +  "-" + month + "-" + d + " (" + dayofw[dow] + ") " + h + ":" + m + ":" + s;
         t = setTimeout(function () { startTime() }, 500);
     }
 
@@ -62,6 +70,6 @@
         }
         return i;
     }
+
 </script>
-{{super()}} 
-{% endblock %}
+{{super()}} {% endblock %}
