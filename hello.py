@@ -30,7 +30,7 @@ def CatTimeDiv():
     timenow=datetime.now().strftime("%m/%d %H:%M")
     return render_template('TZ_div.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,timenow=timenow)
 
-@app.route("/tbl")
+@app.route("/t")
 def CatTimeTbl():
     tz_tokyo = pytz.timezone('Asia/Tokyo')
     tz_sp = pytz.timezone('US/Eastern')
@@ -40,9 +40,9 @@ def CatTimeTbl():
     cat2list=BuildTimezoneList(datetime.now(tz_sp))
     cat3list=BuildTimezoneList(datetime.now(tz_paris))
     timenow=datetime.now().strftime("%m/%d %H:%M")
-    return render_template('TZ_table1.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,timenow=timenow)
+    return render_template('TZ_table.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,timenow=timenow)
 
-@app.route("/tbl1")
+@app.route("/t1")
 def CatTimeTbl1():
     tz_tokyo = pytz.timezone('Asia/Tokyo')
     tz_sp = pytz.timezone('US/Eastern')
@@ -52,7 +52,7 @@ def CatTimeTbl1():
     cat2list=BuildTimezoneList(datetime.now(tz_sp))
     cat3list=BuildTimezoneList(datetime.now(tz_paris))
     timenow=datetime.now().strftime("%m/%d %H:%M")
-    return render_template('TZ_table.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,timenow=timenow)
+    return render_template('TZ_t1.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,timenow=timenow)
 
 
 
