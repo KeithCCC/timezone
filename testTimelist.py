@@ -1,6 +1,6 @@
 from datetime import datetime, tzinfo, timedelta
 import pytz
-
+import numpy as np
 
 def BuildTimezoneList(time1st):
     #time.strftime("%m/%d %H:%M")
@@ -12,10 +12,14 @@ def BuildTimezoneList(time1st):
 
 
 tz_tokyo = pytz.timezone('Asia/Tokyo')
-oneday=datetime.now(tz_tokyo)
-ondaytimelist = BuildTimezoneList(oneday)
+timetokyo=datetime.now(tz_tokyo)
+Tokyolist = BuildTimezoneList(timetokyo)
+tz_sp = pytz.timezone('US/Eastern')
+timesp=datetime.now(tz_sp)
+splist = BuildTimezoneList(timesp)
 
-for j in ondaytimelist:
-    print(j)
+#for j in ondaytimelist:
+#    print(j)
 
-
+a = np.array(Tokyolist)
+a = np.append(a, splist)

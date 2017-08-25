@@ -1,4 +1,8 @@
-{% extends "bootstrap/base.html" %} {% block title %}Global time{% endblock %} {% block content %}
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Global time{% endblock %}
+
+{% block content %}
 
 <body onload="startTime()">
 
@@ -37,7 +41,9 @@
     </div>
 
 </body>
-{% endblock %} {% block scripts %}
+{% endblock %} 
+
+{% block scripts %}
 <script>
     function startTime() {
         var today = new Date();
@@ -67,4 +73,6 @@
 
 
 </script>
-{{super()}} {% endblock %}
+{{super()}}
+
+{% endblock %}
