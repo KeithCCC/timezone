@@ -1,54 +1,16 @@
-{% extends "bootstrap/base.html" %} 
 
-{% block title %}Test page{% endblock %} 
-
-{% block content %}
-<body onload="startTime()">
-    <div class="panel panel-default">
-        <div class="panel-body" align=center>
-            <p id="nowtime"></p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-6 col-md-4">
-                <p>Tokyo</p>
-                <p>{{ cat1 }}</p>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <p>St. Pete</p>
-                <p>{{ cat2 }}</p>
-            </div>
-            <div class="col-xs-6 col-md-4">
-                <p>Paris</p>
-                <p>{{ cat3 }}</p>
-            </div>
-        </div>
-    </div>
-</body>
-{% endblock %} 
-
-{% block scripts %}
-<script>
-    function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        // add a zero in front of numbers<10
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById('nowtime').innerHTML = h + ":" + m + ":" + s;
-        t = setTimeout(function () { startTime() }, 500);
-    }
-
-    function checkTime(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
-</script>
-{{super()}} 
-{% endblock %}
+<table class="table">
+{% for n in cat1 %}
+<tr>
+    {% if loop.index0 == 0 %}
+    <th> {{n}} </th>
+    <th> {{cat2[loop.index0]}} </th>
+    <th> {{cat3[loop.index0]}} </th>
+    {% else %}
+    <td> {{n}} </td>
+    <td> {{cat2[loop.index0]}} </td>
+    <td> {{cat3[loop.index0]}} </td>
+    {% endif %}
+</tr>
+{% endfor %}
+</table>
