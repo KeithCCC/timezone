@@ -60,7 +60,7 @@
         //document.getElementById('nowtime').innerHTML = y + "/" + month + "/" + d + " (" + dayofw(dow) + ") " + h + ":" + m + ":" + s;
         document.getElementById('nowtime').innerHTML = h + ":" + m + ":" + s;
         document.getElementById('nowdate').innerHTML = y + "-" + month + "-" + d + " (" + dayofw[dow] + ") ";
-        t = setTimeout(function () { startTime() }, 500);
+        t = setTimeout(function () { TodayDate() }, 500);
     }
 
     function checkTime(i) {
