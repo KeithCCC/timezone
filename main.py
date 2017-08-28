@@ -9,19 +9,19 @@ Bootstrap(app)
 def BuildTimezoneList(time1st, label):
     #time.strftime("%m/%d %H:%M")
     timelist = [label]
-    timelist.append(time1st.strftime("%m/%d (%a) %H:%M"))
+    timelist.append(time1st.strftime("%m/%d (%a) %H:00"))
     for i in range(24):
         time1st = time1st + timedelta(hours=1)
-        timelist.append(time1st.strftime("%m/%d (%a) %H:%M"))
+        timelist.append(time1st.strftime("%m/%d (%a) %H:00"))
     return timelist
 
 def BuildTimezoneListnoYear(time1st, label):
     #time.strftime("%m/%d %H:%M")
     timelist = [label]
-    timelist.append(time1st.strftime("(%a) %H:%M"))
+    timelist.append(time1st.strftime("(%a) %H:00"))
     for i in range(24):
         time1st = time1st + timedelta(hours=1)
-        timelist.append(time1st.strftime("(%a) %H:%M"))
+        timelist.append(time1st.strftime("(%a) %H:00"))
     return timelist
 
 @app.route("/")
