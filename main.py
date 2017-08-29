@@ -35,7 +35,8 @@ def index():
     cat3list=BuildTimezoneListnoYear(datetime.now(tz_paris), 'Paris')
     cat4list=BuildTimezoneListnoYear(datetime.now(tz_van), 'Vancouver')
     timenow=datetime.now().strftime("%m/%d %H:%M")
-    return render_template('TZ_t1.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,cat4=cat4list, timenow=timenow)
+    cnt=4
+    return render_template('TZ_t1.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,cat4=cat4list, timenow=timenow, cnt=cnt)
 
 @app.route("/t")
 def codetest():
