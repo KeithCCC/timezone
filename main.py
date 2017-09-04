@@ -25,7 +25,7 @@ def BuildTimezoneListnoYear(time1st, label):
     return timelist
 
 @app.route("/")
-def index():
+def CatTime():
     tz_tokyo = pytz.timezone('Asia/Tokyo')
     tz_van = pytz.timezone('US/Pacific')
     tz_sp = pytz.timezone('US/Eastern')
@@ -35,8 +35,22 @@ def index():
     cat3list=BuildTimezoneListnoYear(datetime.now(tz_paris), 'Paris')
     cat4list=BuildTimezoneListnoYear(datetime.now(tz_van), 'Vancouver')
     timenow=datetime.now().strftime("%m/%d %H:%M")
-    cnt=4
-    return render_template('TZ_t1.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,cat4=cat4list, timenow=timenow, cnt=cnt)
+    cnt=3
+    return render_template('index.html',cat1=cat1list,cat2=cat2list,cat3=cat3list,cat4=cat4list, timenow=timenow, cnt=cnt)
+
+
+@app.route("/p")
+def index():
+    tz_tokyo = pytz.timezone('Asia/Tokyo')
+    tz_van = pytz.timezone('US/Pacific')
+    tz_sp = pytz.timezone('US/Eastern')
+    cat1list=BuildTimezoneList(datetime.now(tz_tokyo), 'Tokyo')
+    cat2list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'St. Pete')
+    cat4list=BuildTimezoneListnoYear(datetime.now(tz_van), 'Vancouver')
+    timenow=datetime.now().strftime("%m/%d %H:%M")
+    cnt=3
+    return render_template('index.html',cat1=cat1list,cat2=cat2list,cat3=cat4list, cat4cat=cat4list,timenow=timenow, cnt=cnt)
+
 
 @app.route("/t")
 def codetest():
