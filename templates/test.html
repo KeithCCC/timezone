@@ -1,5 +1,5 @@
 
-<table class="table">
+<table class="table" border=1>
 {% for n in cat1 %}
 <tr>
     {% if loop.index0 == 0 %}
@@ -13,4 +13,12 @@
     {% endif %}
 </tr>
 {% endfor %}
+
+<form method="POST" action="/">
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name(size=20) }}
+    <input type="submit" value="Go">
+</form>
+
+
 </table>
