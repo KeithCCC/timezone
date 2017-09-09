@@ -1,6 +1,7 @@
 {% extends "bootstrap/base.html" %} 
 {% block title %}Global time{% endblock %}
 {% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% block styles %}
 {{super()}}
 <link rel="stylesheet"
@@ -14,7 +15,7 @@
 <body onload="TodayDate()">
     <div class="container">
         <div class="page-header">
-            <h1>Global clock <small>Beta</small></h1>
+            <h1>Timezone lookup <small>alpha</small></h1>
         </div>
 
         <div class="jumbotron" align=left>
@@ -77,6 +78,7 @@
         var s = today.getSeconds();
         var dayofw = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
         // add a zero in front of numbers<10
+        month += 1;
         m = checkTime(m);
         s = checkTime(s);
         //document.getElementById('nowtime').innerHTML = y + "/" + month + "/" + d + " (" + dayofw(dow) + ") " + h + ":" + m + ":" + s;
