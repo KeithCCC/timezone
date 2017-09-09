@@ -2,10 +2,21 @@ from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from datetime import datetime, tzinfo, timedelta
 import pytz
+from flask_nav import Nav
+from flask_nav.elements import *
 
 app = Flask(__name__)
 Bootstrap(app)
- 
+nav = Nav()
+nav.register_element(
+    'top',
+    Navbar(
+        View('Timezone finder', 'index'),
+         Subgroup('Options',
+                 View('Personal zones', 'mysite')),
+        Link('Company info', 'http://www.catmktg.co.jp/'), ))
+nav.init_app(app)
+
 def BuildTimezoneList(time1st, label):
     #time.strftime("%m/%d %H:%M")
     timelist = [label]
@@ -25,7 +36,7 @@ def BuildTimezoneListnoYear(time1st, label):
     return timelist
 
 @app.route("/")
-def CatTime():
+def index():
     tz_tokyo = pytz.timezone('Asia/Tokyo')
     tz_van = pytz.timezone('US/Pacific')
     tz_sp = pytz.timezone('US/Eastern')
@@ -40,7 +51,7 @@ def CatTime():
 
 
 @app.route("/p")
-def index():
+def mysite():
     tz_tokyo = pytz.timezone('Asia/Tokyo')
     tz_van = pytz.timezone('US/Pacific')
     tz_sp = pytz.timezone('US/Eastern')
