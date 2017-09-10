@@ -1,22 +1,39 @@
-{% extends "bootstrap/base.html" %} 
-{% block title %}Global time{% endblock %}
-{% block head %}
-<meta name="viewport" content="width=device-width, initial-scale=1">
-{% block styles %}
-{{super()}}
-<link rel="stylesheet"
-      href="{{url_for('.static', filename='mystyle.css')}}">
-{% endblock %}
-
-{% endblock %}
-
-{% block content %}
-
-{{nav.top.render()}}
+{% extends "bootstrap/base.html" %} {% block title %}Global time{% endblock %} {% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1"> {% block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}"> {% endblock %} {% endblock %} {% block content %}
 
 <body onload="TodayDate()">
-    <div class="container">
 
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
+                    aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="#">Timezone lookup</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../">Company</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="../p">Personal</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
         <div class="jumbotron" align=left>
             <p class="lead" id="nowdate"></p>
             <h1 id="nowtime"></h1>
@@ -31,28 +48,22 @@
                                 {% for n in cat1 %}
                                 <tr>
                                     {% if loop.index0 == 0%}
-                                        <th class="info" align="center"> {{n}} </th>
-                                        {% if cnt >= 2 %}
-                                        <th class="info" align="center"> {{cat2[loop.index0]}} </th>
-                                        {% endif %}
-                                        {% if cnt >= 3 %}
-                                        <th class="info" align="center"> {{cat3[loop.index0]}} </th>
-                                        {% endif %}
-                                        {% if cnt >= 4 %}
-                                        <th class="info" align="center"> {{cat4[loop.index0]}} </th>
-                                        {% endif %}
-                                    {% else %}
-                                        <td align="center"> {{n}} </td>
-                                        {% if cnt >= 2 %}
-                                        <td align="center"> {{cat2[loop.index0]}} </td>
-                                        {% endif %}
-                                        {% if cnt >= 3 %}
-                                        <td align="center"> {{cat3[loop.index0]}} </td>
-                                        {% endif %}
-                                        {% if cnt >= 4 %}
-                                        <td align="center"> {{cat4[loop.index0]}} </td>
-                                        {% endif %}
-                                    {% endif %}
+                                    <th class="info" align="center"> {{n}} </th>
+                                    {% if cnt >= 2 %}
+                                    <th class="info" align="center"> {{cat2[loop.index0]}} </th>
+                                    {% endif %} {% if cnt >= 3 %}
+                                    <th class="info" align="center"> {{cat3[loop.index0]}} </th>
+                                    {% endif %} {% if cnt >= 4 %}
+                                    <th class="info" align="center"> {{cat4[loop.index0]}} </th>
+                                    {% endif %} {% else %}
+                                    <td align="center"> {{n}} </td>
+                                    {% if cnt >= 2 %}
+                                    <td align="center"> {{cat2[loop.index0]}} </td>
+                                    {% endif %} {% if cnt >= 3 %}
+                                    <td align="center"> {{cat3[loop.index0]}} </td>
+                                    {% endif %} {% if cnt >= 4 %}
+                                    <td align="center"> {{cat4[loop.index0]}} </td>
+                                    {% endif %} {% endif %}
                                 </tr>
                                 {% endfor %}
                             </table>
@@ -92,5 +103,6 @@
         }
         return i;
     }
+
 </script>
 {{super()}} {% endblock %}
