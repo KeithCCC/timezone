@@ -11,7 +11,7 @@ source:          [G:\Dev\TimeCat\FindTime]
 target project:  [findtime-177314]
 target service:  [default]
 target version:  [20170827t235719]
-target url:      [https://findtime-177314.appspot.com]
+target url:      [https://globaltime-178216.appspot.com]
 
 console message
 
@@ -36,3 +36,6 @@ To view your application in the web browser run:
   $ gcloud app browse
 
 (TimeCat) G:\Dev\TimeCat\FindTime>
+
+
+python G:\Dev\globaltime\Lib\site-packages\google_appengine\dev_appserver.py app.yaml
