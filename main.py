@@ -43,7 +43,7 @@ def index():
     cnt = 3
     tzlist = list()
     loopCnt = 0
-    for i in cities:
+    for i in citylist:
         if loopCnt == 0:
             tzlist.append(BuildTimezoneList(datetime.now(pytz.timezone(tzdict[i])),i))
         else:
