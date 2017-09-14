@@ -1,17 +1,7 @@
 {% extends "bootstrap/base.html" %} 
-{% import "bootstrap/wtf.html" as wtf %} 
-{% block title %}Global time{% endblock %} 
-
-{% block head %}
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
-{% block styles %} 
-{{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}"> 
-{% endblock %} 
-{% endblock %} 
-
-{% block content %}
+{% block title %}Global time {% endblock %} {% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1"> {% block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}"> {% endblock %} {% endblock %} {% block content %}
 
 <body onload="TodayDate()" style="padding-top: 70px;">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -77,10 +67,7 @@
         </div>
     </div>
     <!-- /container -->
-    {{ c1 }}
-    {{ form.hidden_tag() }}
-            
-    {{ wtf.quick_form(form) }} 
+    {{tzlist}}
 </body>
 {% endblock %} {% block scripts %}
 <script>
@@ -110,6 +97,5 @@
         }
         return i;
     }
-
 </script>
 {{super()}} {% endblock %}

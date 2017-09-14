@@ -11,15 +11,15 @@ app = Flask(__name__)
 app.secret_key = 'development key'
 Bootstrap(app)
 tzdict = {'Tokyo':'Asia/Tokyo', 
-            'St. Pete':'US/Eastern',
+            'St.Pete':'US/Eastern',
             'Tampa':'US/Eastern',
             'Paris':'Europe/Paris', 
             'Vancouver':'US/Pacific'} 
 
 class CityForm(Form):
-    city1 = SelectField(u'Left', choices=[('Tokyo', 'Tokyo'), ('St. Pete', 'St. Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
-    city2 = SelectField(u'Center', choices=[('Tokyo', 'Tokyo'), ('St. Pete', 'St. Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
-    city3 = SelectField(u'Right', choices=[('Tokyo', 'Tokyo'), ('St. Pete', 'St. Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
+    city1 = SelectField(u'Left', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
+    city2 = SelectField(u'Center', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
+    city3 = SelectField(u'Right', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
     submit = SubmitField('Submit')
 
 def BuildTimezoneList(time1st, label):
