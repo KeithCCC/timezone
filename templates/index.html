@@ -75,12 +75,13 @@
                 </div>
             </div>
         </div>
+        {{ form.hidden_tag() }}
+        
+        {{ wtf.quick_form(form) }} 
     </div>
     <!-- /container -->
     {{ c1 }}
-    {{ form.hidden_tag() }}
-            
-    {{ wtf.quick_form(form) }} 
+
 </body>
 {% endblock %} {% block scripts %}
 <script>
