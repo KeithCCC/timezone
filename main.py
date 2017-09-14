@@ -14,12 +14,47 @@ tzdict = {'Tokyo':'Asia/Tokyo',
             'St.Pete':'US/Eastern',
             'Tampa':'US/Eastern',
             'Paris':'Europe/Paris', 
-            'Vancouver':'US/Pacific'} 
+            'Vancouver':'America/Vancouver',
+            'Homburg':'Europe/Berlin',
+            'Milano':'Europe/Rome',
+            'Reading':'Europe/London',
+            'Dallas':'US/Central',
+            'San Jose':'US/Pacific'} 
 
 class CityForm(Form):
-    city1 = SelectField(u'Left', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
-    city2 = SelectField(u'Center', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
-    city3 = SelectField(u'Right', choices=[('Tokyo', 'Tokyo'), ('St.Pete', 'St.Pete'), ('Paris', 'Paris') , ('Vancouver', 'Vancouver')])
+    city1 = SelectField(u'Left', 
+        choices=[
+            ('Tokyo', 'Tokyo'),
+            ('St.Pete', 'St.Pete'),
+            ('Paris', 'Paris'),
+            ('Reading', 'Reading'),
+            ('Homburg', 'Homburg'),
+            ('Milano', 'Milano'),
+            ('Dallas', 'Dallas'),
+            ('San Jose', 'San Jose')
+            ])
+    city2 = SelectField(u'Center',
+        choices=[
+            ('Tokyo', 'Tokyo'),
+            ('St.Pete', 'St.Pete'),
+            ('Paris', 'Paris'),
+            ('Reading', 'Reading'),
+            ('Homburg', 'Homburg'),
+            ('Milano', 'Milano'),
+            ('Dallas', 'Dallas'),
+            ('San Jose', 'San Jose')
+            ])            
+    city3 = SelectField(u'Right', 
+        choices=[
+            ('Tokyo', 'Tokyo'),
+            ('St.Pete', 'St.Pete'),
+            ('Paris', 'Paris'),
+            ('Reading', 'Reading'),
+            ('Homburg', 'Homburg'),
+            ('Milano', 'Milano'),
+            ('Dallas', 'Dallas'),
+            ('San Jose', 'San Jose')
+            ])
     submit = SubmitField('Submit')
 
 def BuildTimezoneList(time1st, label):
@@ -70,9 +105,19 @@ def index():
     loopCnt = 0
     for i in citylist:
         if loopCnt == 0:
-            tzlist.append(BuildTimezoneList(datetime.now(pytz.timezone(tzdict[i])),i))
+            try:
+                tzlist.append(BuildTimezoneList(datetime.now(pytz.timezone(tzdict[i])),i))
+            except:
+                resp = make_response(redirect('/'))
+                resp.set_cookie('cities', 'Tokyo,St.Pete,Paris,Vancouver')
+                return resp
         else:
-            tzlist.append(BuildTimezoneListnoYear(datetime.now(pytz.timezone(tzdict[i])),i))
+            try:
+                tzlist.append(BuildTimezoneListnoYear(datetime.now(pytz.timezone(tzdict[i])),i))
+            except:
+                resp = make_response(redirect('/'))
+                resp.set_cookie('cities', 'Tokyo,St.Pete,Paris,Vancouver')
+                return resp
         loopCnt +=1
 
     timenow=datetime.now().strftime("%m/%d %H:%M")
@@ -89,12 +134,13 @@ def mysite():
     tz_van = pytz.timezone('US/Pacific')
     tz_sp = pytz.timezone('US/Eastern')
     cat1list=BuildTimezoneList(datetime.now(tz_tokyo), 'Tokyo')
-    cat2list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'St.Pete')
+    cat2list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'Paris')
+    cat3list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'St.Pete')
     cat4list=BuildTimezoneListnoYear(datetime.now(tz_van), 'Vancouver')
     timenow=datetime.now().strftime("%m/%d %H:%M")
-    cnt=3
+    cnt=4
     #return render_template('indexp.html',cat1=cat1list,cat2=cat2list,cat3=cat4list,timenow=timenow, cnt=cnt, tzlist='empty' )
-    return render_template('indexp.html',cat1=cat1list,cat2=cat2list,cat3=cat4list, cat4cat=cat4list,timenow=timenow, cnt=cnt, tzlist='empty' )
+    return render_template('indexp.html',cat1=cat1list,cat2=cat2list,cat3=cat3list, cat4=cat4list,timenow=timenow, cnt=cnt, tzlist='empty' )
 
 @app.route("/setting")
 def Setting():
