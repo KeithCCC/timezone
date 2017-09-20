@@ -132,9 +132,10 @@ def index():
 def mysite():
     tz_tokyo = pytz.timezone('Asia/Tokyo'   )
     tz_van = pytz.timezone('US/Pacific')
+    tz_paris = pytz.timezone('Europe/Paris')
     tz_sp = pytz.timezone('US/Eastern')
     cat1list=BuildTimezoneList(datetime.now(tz_tokyo), 'Tokyo')
-    cat2list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'Paris')
+    cat2list=BuildTimezoneListnoYear(datetime.now(tz_paris), 'Paris')
     cat3list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'St.Pete')
     cat4list=BuildTimezoneListnoYear(datetime.now(tz_van), 'Vancouver')
     timenow=datetime.now().strftime("%m/%d %H:%M")
