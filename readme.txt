@@ -39,3 +39,27 @@ To view your application in the web browser run:
 
 
 python G:\Dev\globaltime\Lib\site-packages\google_appengine\dev_appserver.py app.yaml
+
+
+runtime: python27
+env: standard
+threadsafe: true
+instance_class: F1
+handlers:
+  - url: "/favicon\\.ico"
+    application_readable: false
+    static_files: static/img/favicon.ico
+    require_matching_file: false
+    upload: "static/img/favicon\\.ico"
+  - url: '/static/(.*)'
+    application_readable: false
+    static_files: "static/\\1"
+    require_matching_file: false
+    upload: 'static/.*'
+  - url: '/.*'
+    script: main.app
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic
