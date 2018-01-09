@@ -157,5 +157,24 @@ def codetest():
     l3 = ['L3-1', 'L3-2', 'L3-3' , 'L3-4']
     return render_template('test.html',cat1=l1,cat2=l2,cat3=l3)
 
+
+@app.route("/latest")
+def mysitelatest():
+    tz_tokyo = pytz.timezone('Asia/Tokyo'   )
+    tz_van = pytz.timezone('US/Pacific')
+    tz_paris = pytz.timezone('Europe/Paris')
+    tz_sp = pytz.timezone('US/Eastern')
+    tz_zu = pytz.timezone('Europe/Zurich')
+    cat1list=BuildTimezoneList(datetime.now(tz_tokyo), 'Tokyo')
+    cat2list=BuildTimezoneListnoYear(datetime.now(tz_paris), 'Paris')
+    cat3list=BuildTimezoneListnoYear(datetime.now(tz_sp), 'St.Pete')
+    cat4list=BuildTimezoneListnoYear(datetime.now(tz_zu), 'Zurich')
+    timenow=datetime.now().strftime("%m/%d %H:%M")
+    cnt=4
+    #return render_template('indexp.html',cat1=cat1list,cat2=cat2list,cat3=cat4list,timenow=timenow, cnt=cnt, tzlist='empty' )
+    return render_template('latestpic.html',cat1=cat1list,cat2=cat2list,cat3=cat3list, cat4=cat4list,timenow=timenow, cnt=cnt, tzlist='empty' )
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
